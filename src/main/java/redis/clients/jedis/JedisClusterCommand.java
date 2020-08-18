@@ -112,7 +112,7 @@ public abstract class JedisClusterCommand<T> {
       releaseConnection(connection);
       connection = null;
 
-      if (attempts <= 1) {
+      if (attempts <= 2) {
         //We need this because if node is not reachable anymore - we need to finally initiate slots
         //renewing, or we can stuck with cluster state without one node in opposite case.
         //But now if maxAttempts = [1 or 2] we will do it too often.
